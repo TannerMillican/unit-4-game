@@ -1,0 +1,71 @@
+body {
+    background-image: url("../images/game-background.png");
+}
+
+.logo {
+    background-color: #cc5500;
+    width: 275px;
+    height: 100px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+h1 {
+    color: #ffffff
+}
+
+.instructions {
+    background-color: bisque;
+    width: 550px;
+    height: 350px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#instructions {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: green;
+}
+
+.randomNumber {
+    background-color: #94ffb9;
+    width: 220px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    float: left;
+}
+
+.overallScore {
+    float: left;
+    width: 120px;
+    height: 200px;
+    background-color: aqua;
+    padding-left: 5px;
+}
+
+.gem {
+    width: 80px;
+    height: 80px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    background-color: #ffffff;
+}
+
+.totalScore {
+    width: 275px;
+    height: 150px;
+    background-color: #03796f;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#totalScore {
+    color: #ffffff;
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 25px;
+}

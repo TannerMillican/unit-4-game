@@ -1,51 +1,53 @@
-var numbersToGuess = [];
+// Global variables
 
-for (var i = 19; i <= 120; i++) {
-    numbersToGuess.push(i);
+var targetNumber;
+var userTotal = 0;
+var wins = 0;
+var losses = 0;
+
+// Functions
+
+function reset() {
+    for(var i = 0; i < crystals.length; i++) {
+        crystals[i].setAttribute("score", Math.floor(Math.random() * 11 + 1))
+    }
+    targetNumber = Math.floor(Math.random() * 101 + 19);
+    userTotal = 0;
+    $(".scoreFromGems").text(userTotal);
+    $(".randomNumber").text(targetNumber);
 }
 
-var computersRandomNumber = numbersToGuess[Math.floor(Math.random() * numbersToGuess.length)];
-console.log(computersRandomNumber);
-
-$(".randomNumber").append(computersRandomNumber);
-
-var gemNumbers = [];
-
-for (var i = 1; i <= 12; i++) {
-    gemNumbers.push(i);
+function initialize() {
+    crystals = document.getElementsByTagName("img")
+    for(var i = 0; i < crystals.length; i++) {
+        crystals[i].setAttribute("score", Math.floor(Math.random() * 11 + 1))
+        crystals[i].addEventListener("click", (args) => {
+            value = Math.round(args.target.getAttribute("score"))
+            userTotal = userTotal + value;
+            $(".scoreFromGems").text(userTotal);
+            console.log(userTotal);
+            logic();
+        })
+    }
+    targetNumber = Math.floor(Math.random() * 101 + 19);
+    $(".randomNumber").text(targetNumber);
+    $("#wins").text(wins);
+    $("#losses").text(losses);
+    $(".scoreFromGems").text(userTotal);
+}
+function logic() {
+    if (userTotal === targetNumber) {
+        alert("You Win!");
+        reset();
+        wins++;
+        $("#wins").text(+ wins);
+    }
+    else if (userTotal > targetNumber) {
+        alert("You lose!");
+        reset();
+        losses++;
+        $("#losses").text(+ losses);
+    }
 }
 
-var numbersForGemsOne = gemNumbers[Math.floor(Math.random() * gemNumbers.length)];
-console.log(numbersForGemsOne);
-
-$(".gemOne").append(numbersForGemsOne);
-
-$(".gemOne").click(addScore);
-
-var numbersForGemsTwo = gemNumbers[Math.floor(Math.random() * gemNumbers.length)];
-console.log(numbersForGemsTwo);
-
-$(".gemTwo").append(numbersForGemsTwo);
-
-$(".gemTwo").click(addScore);
-
-var numbersForGemsThree = gemNumbers[Math.floor(Math.random() * gemNumbers.length)];
-console.log(numbersForGemsThree);
-
-$(".gemThree").append(numbersForGemsThree);
-
-$(".gemThree").click(addScore);
-
-var numbersForGemsFour = gemNumbers[Math.floor(Math.random() * gemNumbers.length)];
-console.log(numbersForGemsFour);
-
-$(".gemFour").append(numbersForGemsFour);
-
-$(".gemFour").click(addScore);
-
-
-function addScore() {
-    var total;
-    total = parseInt(numbersForGemsOne) + parseInt(numbersForGemsTwo) + parseInt(numbersForGemsThree) + parseInt(numbersForGemsFour);
-    $(".scoreFromGems").append(total);
-}
+initialize();

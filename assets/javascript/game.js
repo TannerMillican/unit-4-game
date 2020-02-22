@@ -25,7 +25,6 @@ function initialize() {
             value = Math.round(args.target.getAttribute("score"))
             userTotal = userTotal + value;
             $(".scoreFromGems").text(userTotal);
-            console.log(userTotal);
             logic();
         })
     }
